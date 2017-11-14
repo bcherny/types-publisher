@@ -1,0 +1,25 @@
+{
+  "name": "types-publisher",
+  "description": "Toolbelt for publishing TypeScript typings",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Boris Cherny <boris@performancejs.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run clean && mkdir dist && tsc -d",
+    "clean": "shx rm -rf dist",
+    "lint": "tslint -c tslint.json src/*.ts",
+    "tdd": "concurrently -r -p '' -k 'npm run watch' 'ava -w'",
+    "test": "ava --verbose",
+    "prepublishOnly": "npm test",
+    "pretest": "npm run build",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "ava": "^0.23.0",
+    "concurrently": "^3.5.0",
+    "shx": "^0.2.2",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.1"
+  }
+}
